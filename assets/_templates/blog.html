@@ -1,0 +1,24 @@
+{#
+ Copyright (c) 2026 Joel Torres
+ Licensed under the MIT License. See the file LICENSE for details.
+#}
+
+{% extends "base.html" %}
+{% block title %}{{ blog_title }}{% endblock %}
+{% block content %}
+<section id="posts">
+<h2>{{ blog_title }}</h2>
+<ul id="post-list">
+{% for post in posts %}
+<li>
+    <time datetime="{{ post.datetime }}"><span class="post-date">{{ post.date }}</span></time> 
+    <a href="{{ post.path }}">{{ post.title }}</a>
+</li>
+{% endfor %}
+</ul>
+{% if posts_len != 0 %}
+<a id="rss" href="{{ blog_path }}index.xml">RSS Feed</a>
+{% endif %}
+</section>
+{% endblock %}
+

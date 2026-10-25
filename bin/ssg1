@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Copyright (c) 2026 Joel Torres
+# Licensed under the MIT License. See the file LICENSE for details.
+
+source $HOME/.ssg1/.venv/bin/activate
+
+python3 $HOME/.ssg1/ssg1.py "$@"
+

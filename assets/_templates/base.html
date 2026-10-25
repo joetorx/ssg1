@@ -1,0 +1,43 @@
+{#
+ Copyright (c) 2026 Joel Torres
+ Licensed under the MIT License. See the file LICENSE for details.
+#}
+
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ site.title }} - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="/styles/style.css">
+        <script src="/scripts/script.js" defer></script>
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <h1 id="title">{{ site.title }}</h1>
+            <nav id="navi" class="{{ site.nav_class }}">
+            <ul id="navi-list">
+            {% for nav in site.nav_list %}
+                <li><a id="{{ nav.id }}" href="{{ nav.path }}">{{ nav.name }}</a></li>
+            {% endfor %}
+            </ul>
+            </nav>
+        </header>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer>
+            <hr>
+            {% block footer %}
+            {% if site.copyright %}
+            <p>Copyright &copy; {{ site.copyright }} by {{ site.author }}</p>
+            {% endif %}
+            {% endblock %}
+        </footer>
+
+    </body>
+</html>
+

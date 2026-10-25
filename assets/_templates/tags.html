@@ -1,0 +1,18 @@
+{#
+ Copyright (c) 2026 Joel Torres
+ Licensed under the MIT License. See the file LICENSE for details.
+#}
+
+{% extends "base.html" %}
+{% block title %}Tags{% endblock %}
+{% block content %}
+<section id="post-tags">
+<h2>Tags</h2>
+<ul id="tag-list">
+{% for tag in tag_index %}
+    <li><a href="{{ site.nav_idx['Blog'] }}{{ tag }}/">{{ tag }}({{ tags[tag].count }})</a></li>
+{% endfor %}
+</ul>
+</section>
+{% endblock %}
+

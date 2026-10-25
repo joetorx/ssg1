@@ -1,0 +1,42 @@
+{#
+ Copyright (c) 2026 Joel Torres
+ Licensed under the MIT License. See the file LICENSE for details.
+#}
+
+<rss version="2.0">
+    <channel>
+        <title>{{ site.title }} - {{ blog_title }}</title>
+        <link>{{ site.url }}</link>
+        <description>{{ site.title }} - {{ blog_title }}</description>
+        <language>{{ site.lang }}</language>
+        {% if site.copyright %}
+        <copyright>Copyright (c) {{ site.copyright }} {{ site.author }}</copyright>
+        {% endif %}
+        {% if site.email %}
+        <managingEditor>{{ site.email }} ({{ site.author }})</managingEditor>
+        <webMaster>{{ site.email }} ({{ site.author }})</webMaster>
+        {% endif %}
+        {% if posts_len != 0 %}
+        <pubDate>{{ posts[0].datetime_visual }}</pubDate>
+        <lastBuildDate>{{ posts[0].datetime_visual }}</lastBuildDate>
+        {% endif %}
+        <generator>{{ site.generator }}</generator>
+        <docs>https://www.rssboard.org/rss-specification</docs>
+        {% for post in posts %}
+        <item>
+            <title>{{ post.title }}</title>
+            <link>{{ site.url }}{{ post.path }}</link>
+            <description>{{ post.html }}</description>
+            {% if site.email %}
+            <author>{{ site.email }} ({{ site.author }})</author>
+            {% endif %}
+            {% if post.tag %}
+            <category>{{ post.tag }}</category>
+            {% endif %}
+            <guid>{{ site.url }}{{ post.path }}</guid>
+            <pubDate>{{ post.datetime_visual }}</pubDate>
+        </item>
+        {% endfor %}
+    </channel>
+</rss>
+

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Copyright (c) 2026 Joel Torres
+# Licensed under the MIT License. See the file LICENSE for details.
+
+# Site serving script
+
+output_dir="www"
+
+if [ -d $output_dir ]; then 
+    python3 -m http.server -b 127.0.0.1 -d $output_dir
+else
+    echo "No $output_dir dir found, nothing to serve..."
+fi
+
